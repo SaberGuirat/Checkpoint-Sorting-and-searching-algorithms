@@ -1,0 +1,33 @@
+PROCEDURE Insertion_Sort(VAR arr :  ARRAY_OF INTEGER)
+VAR
+    i,first,temp : INTEGER; // temp variable temporaire  for storing data
+BEGIN
+    FOR i FROM 1 TO arr.length-1 step 1 DO
+        temp := arr[i]
+        first :=i-1;// first is the first index in array 
+        WHILE (first>=0 and arr[first]>temp) DO
+            arr[first + 1] := arr[first];  
+            first := first - 1;  
+        END_WHILE
+        arr[first + 1] := temp;
+    END_FOR
+END
+
+ALGORITHM Insertion_Sort_Chekpoint
+VAR
+    cards : ARRAY_OF INTEGER[100];
+    k ,len: INTEGER ; 
+BEGIN
+    Write("how many cards you have ? ");
+    Read(len);
+    FOR k FROM 0 TO len-1 STEP 1  DO
+        Write("CARD[",k,"] = ");
+        Read(cards[k]);
+    END_FOR
+    // call insertion sort procedure to sort cards array
+    Insertion_Sort(cards);
+    // output cards array after sorting it 
+    FOR k FROM 0 TO len-1 STEP 1  DO
+        Write("CARD[",k,"] = ",cards[k]);
+    END_FOR
+END
